@@ -29,6 +29,10 @@ import com.apiomat.nativemodule.basics.User;
 import com.apiomat.nativemodule.mysqlaomdbusershopapp2.Employees;
 import com.apiomat.nativemodule.salesmodule2.*;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
@@ -120,6 +124,18 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     {
         if (!r.getIsAccountRequest() && obj.getScore() != null && objFromDB.getScore() != obj.getScore()) {
             this.model.throwException("score modification ia not allowed");
+        }
+
+        String defaultApiKey =  String.valueOf(APP_CONFIG_PROXY.getConfigValue(SalesModule2.DEFAULT_GMAP_API_KEY, r.getApplicationName(), r.getSystem()));
+
+
+        try {
+            final URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?canter=51.34,12.37&zoom=14&size=400x400&key=" + defaultApiKey);
+            obj.postAreaPicture(url.openStream(), "gmaps", "png");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return true;
     }
