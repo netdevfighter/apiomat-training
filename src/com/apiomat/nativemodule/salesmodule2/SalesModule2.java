@@ -71,6 +71,15 @@ public class SalesModule2 implements com.apiomat.nativemodule.IModule
             order = 1 )
     public static String DEFAULT_SCORE = "ShopModule2_score";
 
+    @NativeModuleConfig(
+            datatype = NativeModuleConfig.Type.TEXT,
+            example = "100",
+            title = "API-Key",
+            info = "This is the google maps api key",
+            defaultValue = "100",
+            order = 1 )
+    public static String DEFAULT_GMAP_API_KEY = "ShopModule2_gmapapikey";
+
     /**
      * This method gets called once in the cluster when the module is uploaded.
      */
@@ -152,4 +161,7 @@ public class SalesModule2 implements com.apiomat.nativemodule.IModule
 
         AOM.log(Level.DEBUG, "Current average score: " + String.valueOf(averageScore));
     }
+
+    //AIzaSyCPAq6Ahjt3gEKeIw969PLuRUGlXx2pfSk
+    //https://maps.googleapis.com/maps/api/staticmap?canter=51.34,12.37&zoom=14&size=400x400&key=AIzaSyCPAq6Ahjt3gEKeIw969PLuRUGlXx2pfSk
 }
