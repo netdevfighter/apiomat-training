@@ -121,7 +121,6 @@ public class SalesModule2 implements com.apiomat.nativemodule.IModule
         return -1;
     }
 
-
     @Cron( cronExpression = "0 0/5 * * * ?", executeOnAllNodes = true )
     public void costumCron( final com.apiomat.nativemodule.Request request ) {
         AOM.log(Level.DEBUG, "Cron test");
@@ -142,5 +141,4 @@ public class SalesModule2 implements com.apiomat.nativemodule.IModule
 
         AOM.log(Level.DEBUG, "Current average score: " + String.valueOf(averageScore));
     }
-
 }

@@ -41,8 +41,6 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
 {
     protected com.apiomat.nativemodule.salesmodule2.Lead model;
 
-
-
     @Override
     public void setCallingModel( com.apiomat.nativemodule.salesmodule2.Lead model )
     {
@@ -57,7 +55,6 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     @Override
     public void beforePost( com.apiomat.nativemodule.salesmodule2.Lead obj, com.apiomat.nativemodule.Request r )
     {
-
         Object defaultScore = APP_CONFIG_PROXY.getConfigValue(SalesModule2.DEFAULT_SCORE, r.getApplicationName(), r.getSystem());
         Long castedScore = Long.valueOf( String.valueOf( defaultScore ) );
         this.model.log(Level.INFO, "Creating lead....");
