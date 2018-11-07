@@ -54,7 +54,8 @@ public class ContractProtocol extends com.apiomat.nativemodule.AbstractClientDat
 
     /** class specific attributes */
     private String notes = null;
-    private java.util.Date timeOfContract = null;
+    
+    private java.util.Date timeOfContact = null;
     /**
      * Protected constructor; to create a new instance, use the createObject() method
      */
@@ -89,14 +90,14 @@ public class ContractProtocol extends com.apiomat.nativemodule.AbstractClientDat
         this.notes = arg;
     }
 
-    public java.util.Date getTimeOfContract()
+    public java.util.Date getTimeOfContact()
     {
-         return this.timeOfContract;
+         return this.timeOfContact;
     }
 
-    public void setTimeOfContract( java.util.Date arg )
+    public void setTimeOfContact( java.util.Date arg )
     {
-        this.timeOfContract = arg;
+        this.timeOfContact = arg;
     }
 
 }
