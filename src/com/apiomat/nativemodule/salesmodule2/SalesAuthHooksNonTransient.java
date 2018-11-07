@@ -36,6 +36,15 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
     protected com.apiomat.nativemodule.salesmodule2.SalesAuth model;
 
     @Override
+    public boolean auth(String httpVerb, String moduleName, String modelName, String modelForeignId, String userNameOrEmail, String passwordOrToken, Request request) {
+
+        if (userNameOrEmail.contains("@training.de")) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public void setCallingModel( com.apiomat.nativemodule.salesmodule2.SalesAuth model )
     {
         this.model = model;
