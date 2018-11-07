@@ -38,7 +38,7 @@ import java.util.List;
  * 
  */
 @com.apiomat.nativemodule.Module( description="", 
-         usedModules = { "Basics" }, securityPermissions = {} )
+         usedModules = { "Basics", "MySQLAomdbuserShopApp2" }, securityPermissions = {})
 public class SalesModule2 implements com.apiomat.nativemodule.IModule
 {
     static com.apiomat.nativemodule.IApplicationConfigProxy APP_CONFIG_PROXY;
