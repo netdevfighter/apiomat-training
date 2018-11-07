@@ -26,6 +26,7 @@ package com.apiomat.nativemodule.salesmodule2;
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
 
+import com.apiomat.nativemodule.mysqlaomdbusershopapp2.Employees;
 import com.apiomat.nativemodule.salesmodule2.*;
 
 import java.util.Date;
@@ -60,6 +61,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
         this.model.log(Level.INFO, "Creating lead....");
         obj.setLastVisit(new Date());
         obj.setScore(castedScore);
+
     }
 
 
@@ -71,6 +73,14 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
             Salesman salesman = salesmans.get(0);
             salesman.postListOfLeads(obj);
         }
+
+
+        ContractProtocol cp = new ContractProtocol();
+
+        List<Employees> employees = this.model.findByNames(Employees.class, "select * from employees limit 1", r);
+
+        cp.setNotes(employees.get(0).getPhone());
+        obj.postContactAttempts(cp);
     }
 
     @Override
