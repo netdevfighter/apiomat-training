@@ -75,11 +75,13 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
         }
 
 
-        ContractProtocol cp = new ContractProtocol();
+        ContractProtocol cp = this.model.createObject(ContractProtocol.class, r);
 
         List<Employees> employees = this.model.findByNames(Employees.class, "", r);
         if (employees.size() > 0)
             cp.setNotes(employees.get(0).getPhone());
+
+        cp.save();
         obj.postContactAttempts(cp);
     }
 
