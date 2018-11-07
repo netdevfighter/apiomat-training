@@ -25,6 +25,10 @@
 package com.apiomat.nativemodule.salesmodule2;
 
 
+import com.apiomat.nativemodule.*;
+
+import java.util.List;
+
 /**
  * Generated class for starting and stopping your module. 
  * 
@@ -54,6 +58,15 @@ public class SalesModule2 implements com.apiomat.nativemodule.IModule
     //
     // Read @NativeModuleConfig values using the following code:
     // SalesModule2.APP_CONFIG_PROXY.getConfigValue( SalesModule2.HOSTNAME, appName, system );
+
+    @NativeModuleConfig(
+            datatype = NativeModuleConfig.Type.NUMBER,
+            example = "100",
+            title = "Default score",
+            info = "This is the default score of every new lead",
+            defaultValue = "100",
+            order = 1 )
+    public static String DEFAULT_SCORE = "ShopModule2_score";
 
     /**
      * This method gets called once in the cluster when the module is uploaded.
@@ -106,5 +119,26 @@ public class SalesModule2 implements com.apiomat.nativemodule.IModule
     public int checkHealth( final String appName, final String system )
     {
         return -1;
+    }
+
+    @Cron( cronExpression = "0 0/5 * * * ?", executeOnAllNodes = true )
+    public void costumCron( final com.apiomat.nativemodule.Request request ) {
+        AOM.log(Level.DEBUG, "Cron test");
+        IModel<?>[] leads = AOM.findByNames(request.getApplicationName(), Lead.MODULE_NAME, Lead.MODEL_NAME, null, request);
+
+
+        long scoreAll = 0L;
+        for (IModel lead : leads) {
+            Lead orgLead = (Lead) lead;
+            if (orgLead.getScore() != null)
+                scoreAll += orgLead.getScore();
+        }
+
+        long averageScore = 0L;
+        if (scoreAll > 0 && leads.length > 0) {
+            averageScore = scoreAll / leads.length;
+        }
+
+        AOM.log(Level.DEBUG, "Current average score: " + String.valueOf(averageScore));
     }
 }

@@ -27,7 +27,7 @@ package com.apiomat.nativemodule.salesmodule2;
 
 import com.apiomat.nativemodule.basics.*;
 /**
-* Generated class for your ContractProtocol data model
+* Generated class for your SalesAuth data model
 *
 * DO NOT CHANGE ANY CODE EXCEPT CLASS ANNOTATIONS OR CLASS ATTRIBUTES HERE!
 * EVERYTHING ELSE WILL GET OVERWRITTEN!
@@ -35,13 +35,13 @@ import com.apiomat.nativemodule.basics.*;
 */
 @java.lang.SuppressWarnings( "unused" )
 @com.apiomat.nativemodule.Model( moduleName = "SalesModule2",
-    hooksClassNameTransient = "com.apiomat.nativemodule.salesmodule2.ContractProtocolHooksTransient", 
-    hooksClassNameNonTransient = "com.apiomat.nativemodule.salesmodule2.ContractProtocolHooksNonTransient", 
+    hooksClassNameTransient = "com.apiomat.nativemodule.salesmodule2.SalesAuthHooksTransient", 
+    hooksClassNameNonTransient = "com.apiomat.nativemodule.salesmodule2.SalesAuthHooksNonTransient", 
     isTransient = false,     requiredUserRoleCreate=com.apiomat.nativemodule.UserRole.User, requiredUserRoleRead=com.apiomat.nativemodule.UserRole.User,
     requiredUserRoleWrite=com.apiomat.nativemodule.UserRole.Owner, restrictResourceAccess=false,    allowedRolesCreate={}, allowedRolesRead={},
     allowedRolesWrite={}, allowedRolesGrant={}, 
     roleClassesMap={})
-public class ContractProtocol extends com.apiomat.nativemodule.AbstractClientDataModel<com.apiomat.nativemodule.salesmodule2.ContractProtocol> implements com.apiomat.nativemodule.IModel<com.apiomat.nativemodule.salesmodule2.ContractProtocol>
+public class SalesAuth extends com.apiomat.nativemodule.AbstractClientDataModel<com.apiomat.nativemodule.salesmodule2.SalesAuth> implements com.apiomat.nativemodule.IModel<com.apiomat.nativemodule.salesmodule2.SalesAuth>
 {
     /**
      * Contains the name of the module that this model belongs to
@@ -50,16 +50,13 @@ public class ContractProtocol extends com.apiomat.nativemodule.AbstractClientDat
     /**
      * Contains the name of the model
      */
-    public static final String MODEL_NAME = "ContractProtocol";
+    public static final String MODEL_NAME = "SalesAuth";
 
     /** class specific attributes */
-    private String notes = null;
-    
-    private java.util.Date timeOfContact = null;
     /**
      * Protected constructor; to create a new instance, use the createObject() method
      */
-    public ContractProtocol ()
+    public SalesAuth ()
     {}
 
     /**
@@ -78,26 +75,6 @@ public class ContractProtocol extends com.apiomat.nativemodule.AbstractClientDat
     public String getModelName( )
     {
         return MODEL_NAME;
-    }
-
-    public String getNotes()
-    {
-         return this.notes;
-    }
-
-    public void setNotes( String arg )
-    {
-        this.notes = arg;
-    }
-
-    public java.util.Date getTimeOfContact()
-    {
-         return this.timeOfContact;
-    }
-
-    public void setTimeOfContact( java.util.Date arg )
-    {
-        this.timeOfContact = arg;
     }
 
 }

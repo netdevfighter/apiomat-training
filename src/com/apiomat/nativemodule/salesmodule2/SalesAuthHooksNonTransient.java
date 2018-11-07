@@ -26,23 +26,17 @@ package com.apiomat.nativemodule.salesmodule2;
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
 
-import com.apiomat.nativemodule.salesmodule2.*;
-
-import java.util.Date;
-import java.util.List;
-
-import static com.apiomat.nativemodule.salesmodule2.SalesModule2.APP_CONFIG_PROXY;
 
 /**
-* Generated class for hooks on your Lead data model
+* Generated class for hooks on your SalesAuth data model
 */
 
-public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodule2.Lead> implements com.apiomat.nativemodule.IModelHooksNonTransient<com.apiomat.nativemodule.salesmodule2.Lead>
+public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.salesmodule2.SalesAuth> implements com.apiomat.nativemodule.IModelHooksNonTransient<com.apiomat.nativemodule.salesmodule2.SalesAuth>
 {
-    protected com.apiomat.nativemodule.salesmodule2.Lead model;
+    protected com.apiomat.nativemodule.salesmodule2.SalesAuth model;
 
     @Override
-    public void setCallingModel( com.apiomat.nativemodule.salesmodule2.Lead model )
+    public void setCallingModel( com.apiomat.nativemodule.salesmodule2.SalesAuth model )
     {
         this.model = model;
     }
@@ -53,24 +47,14 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
      */
 
     @Override
-    public void beforePost( com.apiomat.nativemodule.salesmodule2.Lead obj, com.apiomat.nativemodule.Request r )
+    public void beforePost( com.apiomat.nativemodule.salesmodule2.SalesAuth obj, com.apiomat.nativemodule.Request r )
     {
-        Object defaultScore = APP_CONFIG_PROXY.getConfigValue(SalesModule2.DEFAULT_SCORE, r.getApplicationName(), r.getSystem());
-        Long castedScore = Long.valueOf( String.valueOf( defaultScore ) );
-        this.model.log(Level.INFO, "Creating lead....");
-        obj.setLastVisit(new Date());
-        obj.setScore(castedScore);
     }
 
 
     @Override
-    public void afterPost( com.apiomat.nativemodule.salesmodule2.Lead obj, com.apiomat.nativemodule.Request r )
+    public void afterPost( com.apiomat.nativemodule.salesmodule2.SalesAuth obj, com.apiomat.nativemodule.Request r )
     {
-        List<Salesman> salesmans = this.model.findByNames(Salesman.class, "userName == \"" + r.getUserEmail() + "\"", r);
-        if (salesmans.size() == 1) {
-            Salesman salesman = salesmans.get(0);
-            salesman.postListOfLeads(obj);
-        }
     }
 
     @Override
@@ -80,7 +64,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
 
     
     @Override
-    public void afterGet( com.apiomat.nativemodule.salesmodule2.Lead obj, com.apiomat.nativemodule.Request r )
+    public void afterGet( com.apiomat.nativemodule.salesmodule2.SalesAuth obj, com.apiomat.nativemodule.Request r )
     {
     }
 
@@ -92,7 +76,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     }
 
     @Override
-    public java.util.List<com.apiomat.nativemodule.salesmodule2.Lead> afterGetAll( java.util.List<com.apiomat.nativemodule.salesmodule2.Lead> objects, String query, com.apiomat.nativemodule.Request r )
+    public java.util.List<com.apiomat.nativemodule.salesmodule2.SalesAuth> afterGetAll( java.util.List<com.apiomat.nativemodule.salesmodule2.SalesAuth> objects, String query, com.apiomat.nativemodule.Request r )
     {
         /*
          * If you want to change the returned list of elements, you have to create a new list
@@ -104,35 +88,31 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
         return null;
     }
     @Override
-    public boolean beforePut( com.apiomat.nativemodule.salesmodule2.Lead objFromDB, com.apiomat.nativemodule.salesmodule2.Lead obj, com.apiomat.nativemodule.Request r )
+    public boolean beforePut( com.apiomat.nativemodule.salesmodule2.SalesAuth objFromDB, com.apiomat.nativemodule.salesmodule2.SalesAuth obj, com.apiomat.nativemodule.Request r )
     {
-        if (!r.getIsAccountRequest() && obj.getScore() != null && objFromDB.getScore() != obj.getScore()) {
-            this.model.throwException("score modification ia not allowed");
-        }
-        return true;
+        return false;
     }
 
     @Override
-    public void afterPut( com.apiomat.nativemodule.salesmodule2.Lead obj, com.apiomat.nativemodule.Request r )
+    public void afterPut( com.apiomat.nativemodule.salesmodule2.SalesAuth obj, com.apiomat.nativemodule.Request r )
     {
-
     }
 
     @Override
-    public boolean beforeDelete( com.apiomat.nativemodule.salesmodule2.Lead obj, com.apiomat.nativemodule.Request r )
+    public boolean beforeDelete( com.apiomat.nativemodule.salesmodule2.SalesAuth obj, com.apiomat.nativemodule.Request r )
     {
         return false;
     }
 
 
     @Override
-    public boolean beforePostData( final com.apiomat.nativemodule.salesmodule2.Lead obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r )
+    public boolean beforePostData( final com.apiomat.nativemodule.salesmodule2.SalesAuth obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r )
     {
         return false;
     }
 
     @Override
-    public void afterPostData( final com.apiomat.nativemodule.salesmodule2.Lead obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r )
+    public void afterPostData( final com.apiomat.nativemodule.salesmodule2.SalesAuth obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r )
     {
     }
 
@@ -148,24 +128,24 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     }
 
     @Override
-    public boolean beforeDeleteData( final com.apiomat.nativemodule.salesmodule2.Lead obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r )
+    public boolean beforeDeleteData( final com.apiomat.nativemodule.salesmodule2.SalesAuth obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r )
     {
         return false;
     }
 
     @Override
-    public void afterDeleteData( final com.apiomat.nativemodule.salesmodule2.Lead obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r )
+    public void afterDeleteData( final com.apiomat.nativemodule.salesmodule2.SalesAuth obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r )
     {
     }
 
     @Override
-    public boolean beforePostRef( com.apiomat.nativemodule.salesmodule2.Lead obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r )
+    public boolean beforePostRef( com.apiomat.nativemodule.salesmodule2.SalesAuth obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r )
     {
         return false;
     }
 
     @Override
-    public void afterPostRef( com.apiomat.nativemodule.salesmodule2.Lead obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r )
+    public void afterPostRef( com.apiomat.nativemodule.salesmodule2.SalesAuth obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r )
     {
     }
 
@@ -184,13 +164,13 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     }
 
     @Override
-    public boolean beforeDeleteRef( com.apiomat.nativemodule.salesmodule2.Lead obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r )
+    public boolean beforeDeleteRef( com.apiomat.nativemodule.salesmodule2.SalesAuth obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r )
     {
         return false;
     }
 
     @Override
-    public void afterDeleteRef( com.apiomat.nativemodule.salesmodule2.Lead obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r )
+    public void afterDeleteRef( com.apiomat.nativemodule.salesmodule2.SalesAuth obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r )
     {
     }
 
