@@ -62,9 +62,9 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     {
         Object defaultScore = APP_CONFIG_PROXY.getConfigValue(SalesModule2.DEFAULT_SCORE, r.getApplicationName(), r.getSystem());
         Long castedScore = Long.valueOf( String.valueOf( defaultScore ) );
-        this.model.log(Level.INFO, "Creating lead....");
-        obj.setLastVisit(new Date());
-        obj.setScore(castedScore);
+//        this.model.log(Level.INFO, "Creating lead....");
+//        obj.setLastVisit(new Date());
+//        obj.setScore(castedScore);
 
     }
 
