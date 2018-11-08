@@ -61,10 +61,10 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     public void beforePost( com.apiomat.nativemodule.salesmodule2.Lead obj, com.apiomat.nativemodule.Request r )
     {
         Object defaultScore = APP_CONFIG_PROXY.getConfigValue(SalesModule2.DEFAULT_SCORE, r.getApplicationName(), r.getSystem());
-//        Long castedScore = Long.valueOf( String.valueOf( defaultScore ) );
-//        this.model.log(Level.INFO, "Creating lead....");
-//        obj.setLastVisit(new Date());
-//        obj.setScore(castedScore);
+        Long castedScore = Long.valueOf( String.valueOf( defaultScore ) );
+        this.model.log(Level.INFO, "Creating lead....");
+        obj.setLastVisit(new Date());
+        obj.setScore(castedScore);
 
     }
 
@@ -126,17 +126,16 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
             this.model.throwException("score modification ia not allowed");
         }
 
-        /*  String defaultApiKey =  String.valueOf(APP_CONFIG_PROXY.getConfigValue(SalesModule2.DEFAULT_GMAP_API_KEY, r.getApplicationName(), r.getSystem()));
+          String defaultApiKey =  String.valueOf(APP_CONFIG_PROXY.getConfigValue(SalesModule2.DEFAULT_GMAP_API_KEY, r.getApplicationName(), r.getSystem()));
 
-
-      try {
+        try {
             final URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?canter=51.34,12.37&zoom=14&size=400x400&key=" + defaultApiKey);
             obj.postAreaPicture(url.openStream(), "gmaps", "png");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
         return true;
     }
 
