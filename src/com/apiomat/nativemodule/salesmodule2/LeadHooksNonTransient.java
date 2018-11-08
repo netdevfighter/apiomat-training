@@ -129,14 +129,14 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
         String defaultApiKey =  String.valueOf(APP_CONFIG_PROXY.getConfigValue(SalesModule2.DEFAULT_GMAP_API_KEY, r.getApplicationName(), r.getSystem()));
 
 
-        try {
+/*        try {
             final URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?canter=51.34,12.37&zoom=14&size=400x400&key=" + defaultApiKey);
             obj.postAreaPicture(url.openStream(), "gmaps", "png");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
         return true;
     }
 
