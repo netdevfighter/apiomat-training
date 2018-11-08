@@ -139,7 +139,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
             this.model.throwException(e.getMessage());
             e.printStackTrace();
         }
-        return true;
+        return false;
     }
 
     @Override
